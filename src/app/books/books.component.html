@@ -1,0 +1,23 @@
+<div *ngIf="booksLoaded; else elseBlock">
+	<form class="full-width">
+	  <mat-form-field class="full-width">
+		<input matInput placeholder="Search by book name" [(ngModel)]="searchText" name="search">
+	   </mat-form-field>
+	   <mat-nav-list>
+		   <mat-list-item *ngFor="let book of booksAPIResponse.data | filter : searchText"> 
+				<span class="badge">Name: </span>{{book.name}} 
+				<span class="badge">Year: </span>{{book.year}}
+	       </mat-list-item>
+		</mat-nav-list>
+
+		<mat-paginator [length]="booksAPIResponse.total"
+					  [pageSize]="booksAPIResponse.per_page"
+		              (page)="pageEvent = getBooks($event)">
+		</mat-paginator>
+	</form>
+</div>
+
+<ng-template #elseBlock>
+  <span>Loading books...</span>
+</ng-template>
+

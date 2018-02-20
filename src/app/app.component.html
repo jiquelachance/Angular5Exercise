@@ -1,0 +1,30 @@
+<div>
+  <div class="row align-items-center justify-content-center">
+        <img width="150" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  </div>
+  <div class="row align-items-center justify-content-center">
+       <h1 class="badge badge-primary">{{ title }}</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div *ngIf="isLogged; else elseBlock">
+    <div>
+      <app-logout (logoutEvent)="logoutEvent($event)"></app-logout>
+    </div>
+
+    <div class="container">
+      <app-users></app-users>
+    </div>
+
+    <div class="container">
+      <app-books></app-books>
+    </div>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <div class="margin-top-10perc">
+        <app-login (loginEvent)="loginEvent($event)"></app-login>
+  </div>
+</ng-template>
